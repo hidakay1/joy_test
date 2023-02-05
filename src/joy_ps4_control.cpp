@@ -5,7 +5,6 @@
 class PS4ControlPublisher{
 public:
   PS4ControlPublisher() : nh_() {
-    last_joy_.axes = {};
     cmd_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 10);
     joy_sub_ = nh_.subscribe("joy", 10, &PS4ControlPublisher::joyCallback, this);
     timer_ = nh_.createTimer(ros::Duration(0.1), &PS4ControlPublisher::timerCallback, this);
